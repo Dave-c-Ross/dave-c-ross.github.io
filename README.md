@@ -1,6 +1,6 @@
 ## Table of Content
-[create an anchor](#SELinux-Management-Commands)
-[create an anchor](#FirewallD-Manahement-Commands)
+- [SELinux Management Commands](#SELinux-Management-Commands)
+- [FirewallD Manahement Commands](#FirewallD-Manahement-Commands)
 
 ### SELinux Management Commands
 
