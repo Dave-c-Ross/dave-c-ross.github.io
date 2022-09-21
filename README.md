@@ -1,6 +1,10 @@
-## Table of Content
-- [SELinux Management Commands](#SELinux-Management-Commands)
-- [FirewallD Manahement Commands](#FirewallD-Manahement-Commands)
+## Linux Commands
+
+### Network Interface
+
+Add new ip to connection
+
+`sudo nmcli con mod 'Wired connection 5' +ipv4.addresses '10.1.198.102/28' ipv4.gateway '10.1.198.110' ipv4.dns '10.1.196.40' ipv4.ignore-auto-dns yes`
 
 ### SELinux Management Commands
 
