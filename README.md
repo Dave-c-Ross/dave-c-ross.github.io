@@ -1,4 +1,4 @@
-# Snippet
+# SELinux Management Commands
 
 List port managed by SELinux
 
@@ -9,6 +9,8 @@ Grant port in SELinux
 
 `sudo semanage port -a -t http_port_t -p tcp 6443`
 
+
+# FirewallD Manahement Commands
 
 List FirewallD rules
 
