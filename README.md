@@ -36,3 +36,6 @@ Reload FirewallD
 
 Get Workload Resources
 `sudo crictl`
+
+Get local cluster KubeConfig
+`export KUBECONFIG=/etc/kubernetes/static-pod-resources/kube-apiserver-certs/secrets/node-kubeconfigs/lb-int.kubeconfig`
