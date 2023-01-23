@@ -1,3 +1,9 @@
+# Table of content
+
+[Openshift Snippets](/refs/openshift.md)
+
+
+
 ## Linux Commands
 
 ### Manage LVM

@@ -1,0 +1,1 @@
+# Openshift usful snippets
