@@ -1,3 +1,7 @@
+---
+title: OCP Art
+---
+
 # OpenShift Articles and Snippets
 
 ## Table of contents

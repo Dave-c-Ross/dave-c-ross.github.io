@@ -2,8 +2,6 @@
 
 [Openshift Articles and Snippets](/refs/openshift)
 
-
-
 ## Linux Commands
 
 ### Manage LVM

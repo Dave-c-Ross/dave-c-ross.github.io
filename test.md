@@ -2,7 +2,7 @@
 #layout: page
 title: "PAGE-TITLE"
 permalink: /testa
-published: false
+published: true
 ---
 
 # This is a test
