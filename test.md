@@ -18,4 +18,4 @@ permalink: /testa
 {% endfor %}
 
 
-![H]({% site.github.owner_gravatar_url %})
+![H]({{ site.github.owner_gravatar_url }})
