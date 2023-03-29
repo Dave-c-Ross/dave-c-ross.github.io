@@ -1,4 +1,7 @@
-# Table of content
+---
+title: The Techno Info
+layout: home
+---
 
 [Openshift Articles and Snippets](/refs/openshift)
 
