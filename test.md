@@ -19,3 +19,12 @@ permalink: /testa
 
 
 ![H]({{ site.github.owner_gravatar_url }})
+
+
+<ul>
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
