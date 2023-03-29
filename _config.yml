@@ -1,10 +1,10 @@
-theme: minima
+# theme: minima
+remote_theme: jekyll/minima
 title: Articles, Snippets and More
 description: Bookmark this to keep an eye on my project updates!
 
-author:
-  name: David Cuerrier
-  email: dcuerrie@redhat.com
+author: David Cuerrier
+email: dcuerrie@redhat.com
 
 domain: dave-c-ross.github.io       # if you want to force HTTPS, specify the domain without the http at the start, e.g. example.com
 url: https://dave-c-ross.github.io  # the base hostname and protocol for your site, e.g. http://example.com
@@ -15,15 +15,16 @@ url: https://dave-c-ross.github.io  # the base hostname and protocol for your si
 
 
 minima:
-  skin: dark
+  skin: solarized-dark
   social_links:
     - { platform: github,  user_url: "https://github.com/jekyll/jekyll" }
     - { platform: twitter, user_url: "https://twitter.com/jekyllrb" }
 
-# header_pages:
-#   - OCP Art
-#   - openshift.md
-#   - /refs/openshift.md
+header_pages:
+  - OCP Art
+  - openshift.md
+  - /refs/openshift.md
+  - refs/openshift.md
 
 
   # Minima date format.
