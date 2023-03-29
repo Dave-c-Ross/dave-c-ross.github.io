@@ -4,4 +4,8 @@ title:  "Welcome to Jekyll!"
 summary: "Hello Helloo !"
 ---
 
-# Add
+# {{ title }}
+
+* * *
+
+{{ summary }}
