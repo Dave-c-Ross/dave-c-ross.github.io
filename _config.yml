@@ -20,10 +20,10 @@ minima:
     - { platform: github,  user_url: "https://github.com/jekyll/jekyll" }
     - { platform: twitter, user_url: "https://twitter.com/jekyllrb" }
 
-header_pages:
-  - OCP Art
-  - openshift.md
-  - /refs/openshift.md
+# header_pages:
+#   - OCP Art
+#   - openshift.md
+#   - /refs/openshift.md
 
 
   # Minima date format.
