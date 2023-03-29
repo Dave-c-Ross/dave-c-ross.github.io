@@ -1,5 +1,5 @@
 ---
-layout: page
+#layout: page
 title: "PAGE-TITLE"
 permalink: /testa
 ---
@@ -11,3 +11,8 @@ permalink: /testa
 
 [That](/ref/article/openshift-acm-import_non_openshift_cluster)
 
+
+
+{% for repository in site.github.public_repositories %}
+  * [{{ repository.name }}]({{ repository.html_url }})
+{% endfor %}
