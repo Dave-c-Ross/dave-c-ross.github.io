@@ -10,3 +10,6 @@ url: https://dave-c-ross.github.io  # the base hostname and protocol for your si
 
 minima:
   skin: solarized-dark
+  social_links:
+    - { platform: github,  user_url: "https://github.com/jekyll/jekyll" }
+    - { platform: twitter, user_url: "https://twitter.com/jekyllrb" }
