@@ -1,6 +1,6 @@
 # Table of content
 
-[Openshift Snippets](/refs/openshift.md)
+[Openshift Articles and Snippets](/refs/openshift.md)
 
 
 
