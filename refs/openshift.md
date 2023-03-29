@@ -3,6 +3,7 @@
 ## Table of contents
 
 [Display notification banner on OpenShift Web Console](/refs/article/openshift-webconsole-display_notification.md)
+
 [Import non-OpenShift cluster in ACM](/refs/article/openshift-acm-imoprt_non_openshift_cluster.md)
 
 ## Links
