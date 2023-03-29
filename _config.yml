@@ -2,6 +2,10 @@ theme: minima
 title: Articles, Snippets and More
 description: Bookmark this to keep an eye on my project updates!
 
+author:
+  name: David Cuerrier
+  email: dcuerrie@redhat.com
+
 domain: dave-c-ross.github.io       # if you want to force HTTPS, specify the domain without the http at the start, e.g. example.com
 url: https://dave-c-ross.github.io  # the base hostname and protocol for your site, e.g. http://example.com
 #baseurl: /REPOSITORY-NAME/      # place folder name if the site is served in a subfolder
@@ -15,5 +19,33 @@ minima:
   social_links:
     - { platform: github,  user_url: "https://github.com/jekyll/jekyll" }
     - { platform: twitter, user_url: "https://twitter.com/jekyllrb" }
-  header_pages:
-    - TEST.md
+
+header_pages:
+  - OCP Art
+  - openshift.md
+  - /refs/openshift.md
+
+
+  # Minima date format.
+  # Refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this.
+  #
+  # date_format: "%b %-d, %Y"
+
+  # Generate social links in footer.
+  #
+  # social_links:
+  #   - { platform: devto,          user_url: "https://dev.to/jekyll" }
+  #   - { platform: dribbble,       user_url: "https://dribbble.com/jekyll" }
+  #   - { platform: facebook,       user_url: "https://www.facebook.com/jekyll" }
+  #   - { platform: flickr,         user_url: "https://www.flickr.com/photos/jekyll" }
+  #   - { platform: github,         user_url: "https://github.com/jekyll/minima" }
+  #   - { platform: google_scholar, user_url: "https://scholar.google.com/citations?user=qc6CJjYAAAAJ" }
+  #   - { platform: instagram,      user_url: "https://www.instagram.com/jekyll" }
+  #   - { platform: keybase,        user_url: "https://keybase.io/jekyll" }
+  #   - { platform: linkedin,       user_url: "https://www.linkedin.com/in/jekyll" }
+  #   - { platform: microdotblog,   user_url: "https://micro.blog/jekyll" }
+  #   - { platform: pinterest,      user_url: "https://www.pinterest.com/jekyll" }
+  #   - { platform: stackoverflow,  user_url: "https://stackoverflow.com/users/1234567/jekyll" }
+  #   - { platform: telegram,       user_url: "https://t.me/jekyll" }
+  #   - { platform: twitter,        user_url: "https://twitter.com/jekyllrb" }
+  #   - { platform: youtube,        user_url: "https://www.youtube.com/jekyll" }
