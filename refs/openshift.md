@@ -6,9 +6,9 @@ title: OCP Art
 
 ## Table of contents
 
-[Display notification banner on OpenShift Web Console](/refs/article/openshift-webconsole-display_notification.md)
+[Display notification banner on OpenShift Web Console](/refs/article/openshift-webconsole-display_notification)
 
-[Import non-OpenShift cluster in ACM](/refs/article/openshift-acm-imoprt_non_openshift_cluster.md)
+[Import non-OpenShift cluster in ACM](/refs/article/openshift-acm-imoprt_non_openshift_cluster)
 
 ## Links
 I am using this repo to gather together any information I find useful for my day to day, that said, many of those snippets are actually taken words for words from Red Hat website. Here is the links to get more details:

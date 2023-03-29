@@ -21,10 +21,7 @@ minima:
     - { platform: twitter, user_url: "https://twitter.com/jekyllrb" }
 
 header_pages:
-  - OCP Art
   - openshift.md
-  - /refs/openshift.md
-  - refs/openshift.md
 
 
   # Minima date format.
