@@ -8,6 +8,9 @@ url: https://dave-c-ross.github.io  # the base hostname and protocol for your si
 
 # markdown: GFM
 
+header_pages:
+  - TEST.md
+
 minima:
   skin: solarized-dark
   social_links:
