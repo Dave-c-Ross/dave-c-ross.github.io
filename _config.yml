@@ -1,7 +1,12 @@
 # theme: minima
 # remote_theme: jekyll/minima
-theme: jekyll-theme-slate
-title: Articles, Snippets and More
+# theme: jekyll-theme-slate
+remote_theme: "mmistakes/minimal-mistakes"
+plugins:
+  - jekyll-remote-theme
+  - jekyll-include-cache
+
+title: A Red Hatter collection of various projects and notes
 description: Bookmark this to keep an eye on my project updates!
 show_downloads: false
 
@@ -11,6 +16,33 @@ email: dcuerrie@redhat.com
 domain: dave-c-ross.github.io       # if you want to force HTTPS, specify the domain without the http at the start, e.g. example.com
 url: https://dave-c-ross.github.io  # the base hostname and protocol for your site, e.g. http://example.com
 #baseurl: /REPOSITORY-NAME/      # place folder name if the site is served in a subfolder
+
+author:
+  name     : "David Cuerrier"
+  avatar   : "/assets/images/bio-photo.jpg"
+  bio      : "{{ site.github.owner_gravatar_url }}"
+  location : "Somewhere, CA"
+
+
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
+
+  # _pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
 
 # markdown: GFM
 

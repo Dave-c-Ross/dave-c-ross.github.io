@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: home
 title: Home
 published: true
 # permalink: /testa
@@ -14,12 +14,12 @@ published: true
 
 
 
-{% for repository in site.github.public_repositories %}
+<!-- {% for repository in site.github.public_repositories %}
   * [{{ repository.name }}]({{ repository.html_url }}) => {{ repository.contributors }} [ZIP]({{ repository.zip_url }})
   ```
   {{ repository }}
   ```
-{% endfor %}
+{% endfor %} -->
 
 
 ![H]({{ site.github.owner_gravatar_url }})
