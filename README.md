@@ -3,7 +3,7 @@ title: The Techno Info
 layout: home
 permalink: /
 ---
-<!-- 
+
 [Openshift Articles and Snippets](/refs/openshift)
 
 ## Linux Commands
@@ -51,4 +51,4 @@ Get Workload Resources
 
 Get local cluster KubeConfig
 `export KUBECONFIG=/etc/kubernetes/static-pod-resources/kube-apiserver-certs/secrets/node-kubeconfigs/lb-int.kubeconfig`
- -->
+ 
