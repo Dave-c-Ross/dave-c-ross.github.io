@@ -1,5 +1,6 @@
 # theme: minima
-remote_theme: jekyll/minima
+# remote_theme: jekyll/minima
+remote_theme: pages-themes/slate@v0.2.0
 title: Articles, Snippets and More
 description: Bookmark this to keep an eye on my project updates!
 
@@ -12,13 +13,16 @@ url: https://dave-c-ross.github.io  # the base hostname and protocol for your si
 
 # markdown: GFM
 
+plugins:
+- jekyll-remote-theme # add this line to the plugins list if you already have one
 
+show_downloads: false
 
-minima:
-  skin: solarized-dark
-  social_links:
-    - { platform: github,  user_url: "https://github.com/jekyll/jekyll" }
-    - { platform: twitter, user_url: "https://twitter.com/jekyllrb" }
+# minima:
+#   skin: solarized-dark
+#   social_links:
+#     - { platform: github,  user_url: "https://github.com/jekyll/jekyll" }
+#     - { platform: twitter, user_url: "https://twitter.com/jekyllrb" }
 
 header_pages:
   - openshift.md
