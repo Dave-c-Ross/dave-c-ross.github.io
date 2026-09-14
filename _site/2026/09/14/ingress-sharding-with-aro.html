@@ -1,0 +1,551 @@
+
+
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.28.1 by Michael Rose
+  Copyright 2013-2026 Michael Rose - mademistakes.com | @mmistakes
+  Copyright 2024-2026 iBug - ibugone.com | @iBug
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+
+<html lang="en" class="no-js" dir="ltr">
+  <head>
+    
+<meta charset="utf-8">
+
+
+<!-- begin _includes/seo.html --><title>Ingress Sharding with ARO - A Red Hatter collection of various projects and notes</title>
+<meta name="description" content="Based on a request from a customer, here is how you might want to leverage multiple ingress controller inside your ARO cluster, so you can shard and scall routes handling.">
+
+
+  <meta name="author" content="David Cuerrier">
+  
+  <meta property="article:author" content="David Cuerrier">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="A Red Hatter collection of various projects and notes">
+<meta property="og:title" content="Ingress Sharding with ARO">
+<meta property="og:url" content="http://localhost:4000/2026/09/14/ingress-sharding-with-aro.html">
+
+
+  <meta property="og:description" content="Based on a request from a customer, here is how you might want to leverage multiple ingress controller inside your ARO cluster, so you can shard and scall routes handling.">
+
+
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2026-09-14T00:00:00-04:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/2026/09/14/ingress-sharding-with-aro.html">
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="A Red Hatter collection of various projects and notes Feed">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+  
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css"></noscript>
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--posts wide">
+    
+<nav class="skip-links" aria-label="Skip links">
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    
+
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav" aria-label="Primary navigation">
+        
+        <a class="site-title" href="/">
+          A Red Hatter collection of various projects and notes
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a
+                href="/about/"
+                
+                
+              >About</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/posts/"
+                
+                
+              >Posts</a>
+            </li><li class="masthead__menu-item">
+              <a
+                href="/tags/"
+                
+                
+              >Posts by tags</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+
+
+<div id="main" role="main">
+  
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div itemscope itemtype="https://schema.org/Person" class="h-card">
+
+  
+    <div class="author__avatar">
+      <a href="http://localhost:4000/">
+        <img src="/%7B%7B%20site.github.owner_gravatar_url%20%7D%7D" alt="David Cuerrier" itemprop="image" class="u-photo">
+      </a>
+    </div>
+  
+
+  <div class="author__content">
+    <h3 class="author__name p-name" itemprop="name">
+      <a class="u-url" rel="me" href="http://localhost:4000/" itemprop="url">David Cuerrier</a>
+    </h3>
+    
+      <div class="author__bio p-note" itemprop="description">
+        <p>{{ site.github.owner_gravatar_url }}</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-location-dot" aria-hidden="true"></i> <span itemprop="name" class="p-locality">Somewhere, CA</span>
+        </li>
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer me">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  
+  </div>
+
+
+
+  <div class="archive">
+    
+      <h1 id="page-title" class="page__title">Ingress Sharding with ARO</h1>
+    
+    
+
+<p>Based on a request from a customer, here is how you might want to leverage multiple ingress controller inside your ARO cluster, so you can shard and scall routes handling.</p>
+
+<h2 id="prerequisits">Prerequisits</h2>
+<p>Create a new subnet in your VNET</p>
+
+<h2 id="create-the-ingress-controller">Create the ingress controller</h2>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">operator.openshift.io/v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">IngressController</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">custom-ingress-1</span>
+  <span class="na">namespace</span><span class="pi">:</span> <span class="s">openshift-ingress-operator</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">domain</span><span class="pi">:</span> <span class="s">custom.apps.dg6036green.eastus.aroapp.io</span>
+  <span class="na">endpointPublishingStrategy</span><span class="pi">:</span>
+    <span class="na">type</span><span class="pi">:</span> <span class="s">LoadBalancerService</span>
+    <span class="na">loadBalancer</span><span class="pi">:</span>
+      <span class="na">scope</span><span class="pi">:</span> <span class="s">Internal</span>
+</code></pre></div></div>
+
+<p>Then patch the IngressController LB service with the right subnet</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc annotate service router-custom-ingress-1 <span class="nt">-n</span> openshift-ingress <span class="se">\</span>
+  <span class="s2">"service.beta.kubernetes.io/azure-load-balancer-internal-subnet=nlb-subnet"</span> <span class="nt">--overwrite</span>
+</code></pre></div></div>
+
+<p>Optionnaly, you can provid a static IP to be used:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc annotate service router-custom-ingress-1 <span class="nt">-n</span> openshift-ingress <span class="se">\</span>
+  <span class="s2">"service.beta.kubernetes.io/azure-load-balancer-ipv4=192.168.60.22"</span> <span class="nt">--overwrite</span>
+</code></pre></div></div>
+
+<p>Your LB service (used by the new ingresscontroller) will now get an IP from that subnet</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>oc get svc
+NAME                               TYPE           CLUSTER-IP       EXTERNAL-IP     PORT<span class="o">(</span>S<span class="o">)</span>                      AGE
+router-custom-ingress-1            LoadBalancer   172.30.15.164    192.168.60.4    80:31211/TCP,443:32549/TCP   38m
+router-default                     LoadBalancer   172.30.210.86    172.171.36.54   80:30548/TCP,443:32040/TCP   3d19h
+router-internal-custom-ingress-1   ClusterIP      172.30.194.216   &lt;none&gt;          80/TCP,443/TCP,1936/TCP      38m
+router-internal-default            ClusterIP      172.30.211.239   &lt;none&gt;          80/TCP,443/TCP,1936/TCP      3d19h
+</code></pre></div></div>
+
+<h2 id="use-that-new-ic-with-specific-route-or-selected-namespace">Use that new IC with specific route, or selected namespace</h2>
+
+<p>If you do not configure selectors, both IngressControllers will admit and serve every route in the cluster. OpenShift does not automatically divide or shard routes between controllers unless explicit labels and selectors are defined.</p>
+
+<h3 id="use-routeselector">Use routeSelector</h3>
+
+<ol>
+  <li>Configure routeSelector on your IngressController</li>
+</ol>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc patch ingresscontroller custom-ingress-1 <span class="nt">-n</span> openshift-ingress-operator <span class="nt">--type</span><span class="o">=</span>merge <span class="nt">-p</span> <span class="s1">'{"spec":{"routeSelector":{"matchLabels":{"type":"custom-ingress"}}}}'</span>
+</code></pre></div></div>
+
+<ol>
+  <li>Add the Matching Label to Your Route</li>
+</ol>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc label route my-app-route <span class="nb">type</span><span class="o">=</span>custom-ingress <span class="nt">-n</span> my-app-namespace <span class="nt">--overwrite</span>
+</code></pre></div></div>
+
+<p>Or inside a YAML manifest</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">apiVersion</span><span class="pi">:</span> <span class="s">route.openshift.io/v1</span>
+<span class="na">kind</span><span class="pi">:</span> <span class="s">Route</span>
+<span class="na">metadata</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s">my-app-route</span>
+  <span class="na">namespace</span><span class="pi">:</span> <span class="s">my-app-namespace</span>
+  <span class="na">labels</span><span class="pi">:</span>
+    <span class="na">type</span><span class="pi">:</span> <span class="s">custom-ingress</span>
+<span class="na">spec</span><span class="pi">:</span>
+  <span class="na">host</span><span class="pi">:</span> <span class="s">my-app.custom.apps.mycluster.eastus.aroapp.io</span>
+  <span class="na">to</span><span class="pi">:</span>
+    <span class="na">kind</span><span class="pi">:</span> <span class="s">Service</span>
+    <span class="na">name</span><span class="pi">:</span> <span class="s">my-app-service</span>
+</code></pre></div></div>
+
+<h3 id="use-namespaceselector">Use namespaceSelector</h3>
+
+<ol>
+  <li>Label Your Target Namespace(s)</li>
+</ol>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc label namespace my-internal-app ingress-type<span class="o">=</span>internal
+</code></pre></div></div>
+
+<ol>
+  <li>Patch the Custom IngressController</li>
+</ol>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc patch ingresscontroller custom-ingress-1 <span class="nt">-n</span> openshift-ingress-operator <span class="se">\</span>
+  <span class="nt">--type</span><span class="o">=</span>merge <span class="nt">-p</span> <span class="s1">'{"spec":{"namespaceSelector":{"matchLabels":{"ingress-type":"internal"}}}}'</span>
+</code></pre></div></div>
+
+<h3 id="optional-prevent-default-ingresscontroller-from-admitting-the-route">(Optional) Prevent default IngressController from admitting the route</h3>
+
+<p>By default, router-default admits all cluster routes. If you want to isolate namespaces entirely so router-default ignores them, set a namespaceSelector on your custom router and label the application namespace accordingly:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc label namespace my-app-namespace <span class="nv">ingress</span><span class="o">=</span>custom
+oc patch ingresscontroller custom-ingress-1 <span class="nt">-n</span> openshift-ingress-operator <span class="nt">--type</span><span class="o">=</span>merge <span class="nt">-p</span> <span class="s1">'{"spec":{"namespaceSelector":{"matchLabels":{"ingress":"custom"}}}}'</span>
+</code></pre></div></div>
+
+<p>Or the other way around, only allow default IC to specific NS</p>
+
+<ol>
+  <li>Label public/external namespaces
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc label namespace my-public-app ingress-type<span class="o">=</span>public
+</code></pre></div>    </div>
+  </li>
+  <li>Patch the default ingresscontroller
+    <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>oc patch ingresscontroller default <span class="nt">-n</span> openshift-ingress-operator <span class="se">\</span>
+  <span class="nt">--type</span><span class="o">=</span>merge <span class="nt">-p</span> <span class="s1">'{"spec":{"namespaceSelector":{"matchLabels":{"ingress-type":"public"}}}}'</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+
+
+<ul class="taxonomy__index">
+  
+  
+    <li>
+      <a href="#2026">
+        <strong>2026</strong> <span class="taxonomy__count">1</span>
+      </a>
+    </li>
+  
+    <li>
+      <a href="#2023">
+        <strong>2023</strong> <span class="taxonomy__count">1</span>
+      </a>
+    </li>
+  
+</ul>
+
+
+
+
+  <section id="2026" class="taxonomy__section">
+    <h2 class="archive__subtitle">2026</h2>
+    <div class="entries-list">
+      
+        
+
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc p-name" itemprop="headline">
+      
+        <a class="u-url" href="/2026/09/14/ingress-sharding-with-aro.html" rel="permalink">Ingress Sharding with ARO
+</a>
+      
+    </h2>
+    
+
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt p-summary" itemprop="description">Based on a request from a customer, here is how you might want to leverage multiple ingress controller inside your ARO cluster, so you can shard and scall ro...</p>
+  </article>
+</div>
+
+      
+    </div>
+    <a href="#page-title" class="back-to-top">Back to Top &uarr;</a>
+  </section>
+
+  <section id="2023" class="taxonomy__section">
+    <h2 class="archive__subtitle">2023</h2>
+    <div class="entries-list">
+      
+        
+
+
+
+
+<div class="list__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc p-name" itemprop="headline">
+      
+        <a class="u-url" href="/2023/03/27/add-new-ip-to-connection.html" rel="permalink">Welcome to Jekyll!
+</a>
+      
+    </h2>
+    
+
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          less than 1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt p-summary" itemprop="description">Hello Helloo !
+</p>
+  </article>
+</div>
+
+      
+    </div>
+    <a href="#page-title" class="back-to-top">Back to Top &uarr;</a>
+  </section>
+
+
+  </div>
+</div>
+
+      
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        
+
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-square-rss" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+
+<div class="page__footer-copyright">&copy; 2026 <a href="http://localhost:4000">A Red Hatter collection of various projects and notes</a>. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/jekyll-themes/minimal-mistakes/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
