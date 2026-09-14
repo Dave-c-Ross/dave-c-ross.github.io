@@ -1,7 +1,7 @@
 # theme: minima
 # remote_theme: jekyll/minima
 remote_theme: pages-themes/slate@v0.2.0
-title: Articles, Snippets and More
+title: Articles, Snippets and More +
 description: Bookmark this to keep an eye on my project updates!
 
 author: David Cuerrier
