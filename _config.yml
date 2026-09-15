@@ -6,7 +6,7 @@ plugins:
   - jekyll-remote-theme
   - jekyll-include-cache
 
-title: A Red Hatter collection of various projects and notes
+title: A collection of various projects and notes
 description: Bookmark this to keep an eye on my project updates!
 show_downloads: false
 
@@ -21,7 +21,7 @@ author:
   name     : "David Cuerrier"
   avatar   : "https://github.com/Dave-c-Ross.png"
   bio      : ""
-  location : "Somewhere, CA"
+  location : "Québec, CA"
 
 
 defaults:
@@ -36,6 +36,7 @@ defaults:
       comments: true
       share: true
       related: true
+      classes: wide
 
   # _pages
   - scope:

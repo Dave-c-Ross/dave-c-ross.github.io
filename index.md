@@ -1,10 +1,10 @@
 ---
-layout: home
-title: Home
+layout: single
+title: ""
 published: true
 # permalink: /testa
 ---
-
+<!-- 
 # This is a test
 
 [This](/ref/article/openshift-acm-import_non_openshift_cluster.md)
@@ -12,7 +12,7 @@ published: true
 
 [That](/ref/article/openshift-acm-import_non_openshift_cluster)
 
-
+ -->
 
 <!-- {% for repository in site.github.public_repositories %}
   * [{{ repository.name }}]({{ repository.html_url }}) => {{ repository.contributors }} [ZIP]({{ repository.zip_url }})
@@ -21,8 +21,6 @@ published: true
   ```
 {% endfor %} -->
 
-
-![H]({{ site.github.owner_gravatar_url }})
 
 # Recent Updates
 

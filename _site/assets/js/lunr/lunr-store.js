@@ -1,8 +1,8 @@
 var store = [{
-        "title": "Welcome to Jekyll!",
-        "excerpt":"Hello Helloo !  ","categories": [],
-        "tags": [],
-        "url": "/2023/03/27/add-new-ip-to-connection.html",
+        "title": "Display a notification bar on OpenShift Web Console",
+        "excerpt":"Wether you want to identify your many clusters, or you want to warn your user of an upcoming maintenance, notification bar displayed on top or at the bottom of the Web Console is a good option. Let’s see how to generate one of those. Everything in OpenShift is a Kubernetes...","categories": [],
+        "tags": ["Red Hat","OpenShift"],
+        "url": "/2024/04/09/display-notification-ocp-console.html",
         "teaser": null
       },{
         "title": "Ingress Sharding with ARO",
