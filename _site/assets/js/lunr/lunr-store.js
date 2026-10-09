@@ -10,4 +10,16 @@ var store = [{
         "tags": ["Red Hat","ARO","OpenShift"],
         "url": "/2026/09/14/ingress-sharding-with-aro.html",
         "teaser": null
+      },{
+        "title": "NMCLI CheatSheet",
+        "excerpt":"Hello Helloo !  ","categories": [],
+        "tags": ["Red Hat","RHEL"],
+        "url": "/2026/09/15/nmcli-cheatsheet.html",
+        "teaser": null
+      },{
+        "title": "Openshift Virtualization - Live Migration between multicluster using ACM",
+        "excerpt":"When moving Virtual Machines between two separate OpenShift clusters managed by Red Hat Advanced Cluster Management (ACM), true zero-downtime memory live migration across a wide-area network is not technically possible. Instead, cross-cluster migration is achieved using Orchestrated Failover/Relocation (Disaster Recovery) or Warm Migration. Red Hat Reference The underlying architecture relies...","categories": [],
+        "tags": ["Red Hat","ARO","OpenShift","Virtualization"],
+        "url": "/2026/09/17/openshift-virtualization-live-migration-multicluster-acm.html",
+        "teaser": null
       }]

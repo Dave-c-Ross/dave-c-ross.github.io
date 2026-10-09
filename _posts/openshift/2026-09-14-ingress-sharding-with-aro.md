@@ -6,7 +6,6 @@ tags:
   - ARO
   - OpenShift
 classes: wide
-
 ---
 
 Based on a request from a customer, here is how you might want to leverage multiple ingress controller inside your ARO cluster, so you can shard and scall routes handling.

@@ -5,6 +5,7 @@ remote_theme: "mmistakes/minimal-mistakes"
 plugins:
   - jekyll-remote-theme
   - jekyll-include-cache
+  - jekyll-alerts-plugin
 
 title: A collection of various projects and notes
 description: Bookmark this to keep an eye on my project updates!

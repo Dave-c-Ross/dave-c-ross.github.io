@@ -3,9 +3,9 @@ layout: single
 tags:
   - Red Hat
   - RHEL
-title:  "Welcome to Jekyll!"
+title:  "NMCLI CheatSheet"
 summary: "Hello Helloo !"
-published: false
+published: true
 ---
 
 {{ page.summary }}
