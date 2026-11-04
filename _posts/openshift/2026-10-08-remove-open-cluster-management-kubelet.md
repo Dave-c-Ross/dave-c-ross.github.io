@@ -1,5 +1,5 @@
 ---
-title: "Remove OpenClusterManager Addod Kubelet"
+title: "Remove OpenClusterManager Kubelet"
 layout: posts
 tags:
   - Red Hat
@@ -22,4 +22,4 @@ oc delete ClusterRole open-cluster-management:klusterlet-admin-aggregate-cluster
 
 oc delete Klusterlet klusterlet
 oc delete CustomResourceDefinition klusterlets.operator.open-cluster-management.io
-``
+```
